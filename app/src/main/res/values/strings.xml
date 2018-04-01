@@ -1,0 +1,8 @@
+<resources>
+    <string name="app_name">Гречка</string>
+    <string name="title_activity_user">Гречка</string>
+    <string name="title_activity_about">Обо мне</string>
+    <string name="title_activity_songs">Песни</string>
+    <string name="title_activity_photo">Фото</string>
+    <string name="title_activity_link">Ссылки</string>
+</resources>

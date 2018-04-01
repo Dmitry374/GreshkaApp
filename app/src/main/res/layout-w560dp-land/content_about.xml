@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.v4.widget.NestedScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    app:behavior_overlapTop="@dimen/big_activity_margin_vertical"
+    app:layout_behavior="@string/appbar_scrolling_view_behavior"
+    tools:context=".activity.AboutActivity"
+    tools:showIn="@layout/activity_about"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <android.support.v7.widget.CardView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="@dimen/text_margin"
+        android:layout_marginEnd="@dimen/big_activity_margin_horizontal"
+        android:layout_marginStart="@dimen/big_activity_margin_horizontal">
+
+        <TextView
+            android:id="@+id/tvScrollingAbout"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:textSize="18sp"
+            android:textColor="#000000"
+            android:lineSpacingExtra="@dimen/text_margin_very_small"
+            android:padding="@dimen/big_activity_text_margin"
+            android:text="Text"
+            android:textIsSelectable="true" />
+
+    </android.support.v7.widget.CardView>
+
+</android.support.v4.widget.NestedScrollView>
