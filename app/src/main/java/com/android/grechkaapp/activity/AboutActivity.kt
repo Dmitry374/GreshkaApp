@@ -1,6 +1,9 @@
 package com.android.grechkaapp.activity
 
 import android.content.Context
+import android.content.res.ColorStateList
+import android.content.res.Configuration
+import android.graphics.Color
 import android.os.Bundle
 import android.support.v7.app.AlertDialog
 import android.support.v7.app.AppCompatActivity
@@ -29,14 +32,18 @@ class AboutActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_about)
+
+        window.addFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_NAVIGATION)
+
         setSupportActionBar(toolbar)
 
         supportActionBar!!.setDisplayHomeAsUpEnabled(true)
         supportActionBar!!.setDisplayShowHomeEnabled(true)
 
-        toolbar.setNavigationOnClickListener { finish() }
-
-        window.addFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_NAVIGATION)
+        if (supportActionBar != null) {
+            supportActionBar!!.setDisplayHomeAsUpEnabled(true)
+            toolbar.setNavigationOnClickListener { finish() }
+        }
 
         val intent = intent
         urlImg = intent.getStringExtra("imgAbout")
@@ -53,8 +60,19 @@ class AboutActivity : AppCompatActivity() {
 
         Glide.with(this).load(urlImg).into(image_scrolling_top)
 
-
-
     }
 
+    override fun onResume() {
+        super.onResume()
+
+        val configuration = resources.configuration
+        if (configuration.orientation == Configuration.ORIENTATION_LANDSCAPE) {
+            window.clearFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_NAVIGATION)
+
+            val collapsing_toolbar_layout = findViewById<android.support.design.widget.CollapsingToolbarLayout>(R.id.collapsing_toolbar_layout)
+            collapsing_toolbar_layout.setExpandedTitleTextColor(ColorStateList.valueOf(Color.TRANSPARENT))
+        } else {
+            window.addFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_NAVIGATION)
+        }
+    }
 }
